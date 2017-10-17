@@ -1,2 +1,2 @@
-# QCM_Project
+# Hated_QCM_Project
 QCM_Projet by Team "Hated"
