@@ -19,5 +19,10 @@ Project for "Méthodologie de la production d'applications", realized students a
  * **T**om-Brian Garcia
  * **E**nzo Contini
  * **D**yvia Fleury
+ *   
+ * **T**
+ * **E**
+ * **A**
+ * **M**
 
 Students at Lyon1 University in Bourg-en-Bresse
