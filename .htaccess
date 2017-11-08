@@ -1,0 +1,16 @@
+# ===== ===== QCMaster - HTACCESS File - START ===== ===== #
+
+# ===== Removed Settings ===== #
+#Options -Indexes
+
+# ===== Error Pages ===== #
+ErrorDocument 403 /php/pages/403.php
+ErrorDocument 404 /php/pages/404.php
+
+# ===== Index Page ===== #
+DirectoryIndex /php/pages/index.php
+
+# ===== Encoding ===== #
+AddDefaultCharset utf-8
+
+# ===== ===== QCMaster - HTACCESS File - END ===== ===== #
