@@ -14,10 +14,10 @@
 
 Project for "Méthodologie de la production d'applications", realized students at Lyon1 University in Bourg-en-Bresse
 
- * __H__alim Azizi
- * __A__lec Montrade
- * __T__om-Brian Garcia
- * __E__nzo Contini
- * __D__yvia Fleury
+ * **H**alim Azizi
+ * **A**lec Montrade
+ * **T**om-Brian Garcia
+ * **E**nzo Contini
+ * **D**yvia Fleury
 
 Students at Lyon1 University in Bourg-en-Bresse
