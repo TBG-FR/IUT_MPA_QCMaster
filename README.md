@@ -1,5 +1,4 @@
 # QCMaster Project
-QCMaster by Team "Hated"
 
 ## Files Organization
 
@@ -13,12 +12,12 @@ QCMaster by Team "Hated"
  
 ## Credits
 
-Project for "Méthodologie de la production d'applications", realized by the H.A.T.E.D. team :
+Project for "Méthodologie de la production d'applications", realized students at Lyon1 University in Bourg-en-Bresse
 
- * Halim Azizi
- * Alec Montrade
- * Tom-Brian Garcia
- * Enzo Contini
- * Dyvia Fleury
+ * __H__alim Azizi
+ * __A__lec Montrade
+ * __T__om-Brian Garcia
+ * __E__nzo Contini
+ * __D__yvia Fleury
 
 Students at Lyon1 University in Bourg-en-Bresse
