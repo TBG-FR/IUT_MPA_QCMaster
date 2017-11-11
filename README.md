@@ -13,7 +13,7 @@
  
 ## Credits
 
-Project for "Méthodologie de la production d'applications", realized by Computing students at Lyon1 University in Bourg-en-Bresse
+Project for "Méthodologie de la production d'applications", realized by students at Lyon1 University in Bourg-en-Bresse
 
  * **TEAM**
  * **H**alim Azizi
