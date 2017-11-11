@@ -1,6 +1,31 @@
 <?php   // 'various.inc.php' ~ Useful functions for the whole system (classes, functions, etc)
 
-/* ----- Password Hash ----- */
+/* ----- ----- String Securization ----- ----- */
+
+/**
+ * Function 'var_secure' : Securizes the given string to make if safe  (Source: https://openclassrooms.com)
+ * @param string $string : the given string
+ * @return string secured
+ */
+function var_secure($string) {
+    
+    // If the type of the string is an Integer (int)
+		if(ctype_digit($string))
+		{
+			$string = intval($string);
+		}
+		// For all other types
+		else
+		{
+			//$string = mysql_real_escape_string($string); // deprecated, to remplace (with PDO::quote ? filter_input ?)
+			$string = addcslashes($string, '%_');
+            $string = htmlEntities($string, ENT_QUOTES);
+		}
+		
+		return $string;
+}
+
+/* ----- ----- Password Hash ----- ----- */
 
 /**
  * Function 'hash' : Hashes the given password (Source: PHP Course @ IUT Lyon1, TP3 Correction)
@@ -18,7 +43,13 @@ public function hash($password){
 
 }
 
-/* ----- Another Function ----- */
+/* ----- ----- Another Function ----- ----- */
+
+/**
+ * Function 'Name' : Description
+ * @param type $var1
+ * @return type
+ */
 /*
     INSERT FUNCTION
     CODE HERE
