@@ -28,11 +28,11 @@ function var_secure($string) {
 /* ----- ----- Password Hash ----- ----- */
 
 /**
- * Function 'hash' : Hashes the given password (Source: PHP Course @ IUT Lyon1, TP3 Correction)
+ * Function 'ownhash' : Hashes the given password (Source: PHP Course @ IUT Lyon1, TP3 Correction)
  * @param string $password
  * @return string hashed
  */
-public function hash($password){
+function ownhash($password){
     // on choisira ici la méthode de cryptage de mot de passe
     //return md5($password);
     $options = array(
