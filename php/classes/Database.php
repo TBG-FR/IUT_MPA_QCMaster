@@ -7,7 +7,7 @@
  */
 class Database {
 
-    /* ----- -----  ----- ----- Attributes ----- -----  ----- ----- */
+    /* ----- -----  ----- ----- Attribute(s) ----- -----  ----- ----- */
 
     /**
      * @var string : Stores the MySQL Server address
@@ -44,7 +44,7 @@ class Database {
      */ 
     private $stmt;
 
-    /* ----- -----  ----- ----- Constructor ----- -----  ----- ----- */
+    /* ----- -----  ----- ----- Constructor(s) ----- -----  ----- ----- */
 
     /**
      * Database's Constructor : Creates the Database instance, and especially the PDO instance
@@ -72,25 +72,22 @@ class Database {
 
     }
 
-    /* ----- -----  ----- ----- Functions ----- -----  ----- ----- */
+    /* ----- -----  ----- ----- Accessor(s) ----- -----  ----- ----- */
 
     /**
-     * Insert Function Description Here
-     * @param string $password : the password we want to hash
-     * @return string hashed
+     * Accessor 'getError' : Returns the error(s) string
+     * @param null : This function needs no parameters
+     * @return string
      */
-    //private function hash($password){ //***MODIF_PROJECT***
-    public function hash($password){
-        // on choisira ici la méthode de cryptage de mot de passe
-        //return md5($password);
-        $options = array(
-            'salt' => 'Zbk6s2i!!?vs+_tM2-&-=mvTpW4ReC945VH64Vb9&7$+R2UxW6Gb!@6eH#7P' // on choisi un code pour que l'algo de cryptage soit réversible
-        );
-        return password_hash($password, CRYPT_BLOWFISH, $options);
-        /* PASSWORD_BCRYPT ? */
-
+    function getError() {
+        return $this->error;
     }
 
+    /* ----- -----  ----- ----- Mutator(s) ----- -----  ----- ----- */
+
+
+    /* ----- -----  ----- ----- Method(s) ----- -----  ----- ----- */
+    
     /**
     * Function 'query' : Prepares the given query, allowing values binding, among others
     * @param string $query : the query we want to execute
