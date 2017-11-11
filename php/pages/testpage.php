@@ -31,7 +31,32 @@ require_once('../includes/all.inc.php');
 
             <?php
 
-            $db = new Database();
+
+            echo "<h2>Code HTML Généré par PHP (sans retour à la ligne)</h2>";
+            
+            echo "<div id='1'>
+                    <p>
+                        Here is some text. It should even be a paraagraph, but I'm lazy...<br />
+                        Another line. Highwaaaaay to HELL !
+                    </p>
+                    <button>Click</button>
+                    <br />
+                    <a href='#link'>Link</a></div>";
+
+            echo " \r\n \r\n";
+            echo "<h2>Code HTML Généré par PHP (avec retour à la ligne)</h2> \r
+            
+                  <div id='1'> \r
+                      <p> \r
+                          Here is some text. It should even be a paraagraph, but I'm lazy...<br /> \r
+                          Another line. Highwaaaaay to HELL ! \r
+                      </p> \r
+                      <button>Click</button> \r
+                      <br /> \r
+                      <a href='#link'>Link</a>
+                  </div> \r\n\n";
+                  
+            //$db = new Database();
 
             echo "<h2>Insert a new record</h2>";
             //Firstly you need to instantiate a new database.
