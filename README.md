@@ -12,17 +12,13 @@
  
 ## Credits
 
-Project for "Méthodologie de la production d'applications", realized students at Lyon1 University in Bourg-en-Bresse
+Project for "Méthodologie de la production d'applications", realized by students at Lyon1 University in Bourg-en-Bresse
 
+ * **TEAM**
  * **H**alim Azizi
  * **A**lec Montrade
  * **T**om-Brian Garcia
  * **E**nzo Contini
  * **D**yvia Fleury
- *   
- * **T**
- * **E**
- * **A**
- * **M**
 
 Students at Lyon1 University in Bourg-en-Bresse
