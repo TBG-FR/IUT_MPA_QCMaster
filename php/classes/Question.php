@@ -22,6 +22,11 @@ class Question {
      * @var array<Answer> : All the answers related to this question
      */
     private $answers;
+
+    /**
+     * @var int : Number of answers of that question
+     */
+    private $nbAnswers;
     
     /* ----- -----  ----- ----- Constructor(s) ----- -----  ----- ----- */
 
@@ -35,6 +40,7 @@ class Question {
         $this->id = $id;
         $this->title = $title;
         $this->answers = null;
+        $this->nbAnswers=0;
     }
     
     /* ----- -----  ----- ----- Accessor(s) ----- -----  ----- ----- */
@@ -120,15 +126,7 @@ class Question {
     
     /* ----- -----  ----- ----- Method(s) ----- -----  ----- ----- */
 
-//    /**
-//     * Method 'ato add a question to the QCM 
-//     * @param nothing
-//     * @return array of correct answers id 
-//     */
-//    private function getCorrectAnswers(){
-//        //code
-//        return int[];
-//    }
+
 //
 //    /**
 //     *  to check the match between the subject and the answers
@@ -141,6 +139,16 @@ class Question {
 //        
 //        return true;
 //    }
+//    /**
+//     * metod 'addAnswer' : add an aswer on the array aswers
+//     * @param string $proposition : The  answer
+//     * @return null : This function returns nothing
+//     */
+   function addAnswer($answer) {
+       $this->answers[$this->nbAnswers]=$answer;
+       $this->nbAnswers++;
+     
+    }
 
     /* ----- -----  ----- ----- End of Class ----- -----  ----- ----- */
 }

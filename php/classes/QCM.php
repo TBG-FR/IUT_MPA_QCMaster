@@ -45,11 +45,31 @@ class QCM {
      * @param null : This function needs no parameters
      * @return null : This function returns nothing
      */
-    public function __construct(){
-        
-        // CODE
+    public function __construct(){}
+    /**
+     * QCM's Constructor : for the qcm create with de DB
+     * @param null : This function needs no parameters
+     * @return null : This function returns nothing
+     */
+    public function constructFromDB($id){
+        $this->id=$id;
+        $this->teacher_id=$id_teacher;
+        $this->title=$title;
+        $this->topic=$topic;
+        $this->link=$link;
+        $this->questions=$questions;
         
     }
+    /**
+     * QCM's Constructor : for the qcm create from scratch
+     * @param null : This function needs no parameters
+     * @return null : This function returns nothing
+     */
+    public function constructFromScratch(){
+        $this->title="";
+        $this->topic="";
+    }
+            
     
     /* ----- -----  ----- ----- Accessor(s) ----- -----  ----- ----- */
     
@@ -137,6 +157,15 @@ class QCM {
     }
 
     /**
+     * Mutator 'setTopic' : Modify the title of that QCM
+     * @param string $title : The new title of that QCM
+     * @return null : This function returns nothing
+     */
+    function setTopic($topic) {
+        $this->topic = $topic;
+    }
+
+    /**
      * Mutator 'setLink' : Modify the link of that QCM
      * @param string $link : The new link of that QCM
      * @return null : This function returns nothing
@@ -172,10 +201,11 @@ class QCM {
 //     * @param Question $question
 //     * @return null : This function returns nothing
 //     */
-//    private function addQuestion($question){
-//        $this->questions[]=$question;
-//    }
-//
+     function addQuestion($question){
+        $this->questions[]=$question;
+        
+    }
+
 //    /**
 //     * Function 'saveIntoDB' : to save the QCM into the Database 
 //     * @param Database DB
