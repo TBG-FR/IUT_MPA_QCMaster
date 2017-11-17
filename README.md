@@ -8,21 +8,21 @@
  * All PHP Classes files must be under '/php/classes/' folder
  * All PHP Includes files must be under '/php/includes/' folder
  * All PHP Pages files must be under '/php/pages/' folder
+ * All SQL Scripts (to generate the Database) must be under '/sql/' folder
  * ...
  
 ## Credits
 
-Project for "Méthodologie de la production d'applications", realized students at Lyon1 University in Bourg-en-Bresse
+Project for "Méthodologie de la production d'applications", realized by students at Lyon1 University in Bourg-en-Bresse
 
+ * **TEAM**
  * **H**alim Azizi
  * **A**lec Montrade
  * **T**om-Brian Garcia
  * **E**nzo Contini
  * **D**yvia Fleury
- *   
- * **T**
- * **E**
- * **A**
- * **M**
+ 
+## Status
 
-Students at Lyon1 University in Bourg-en-Bresse
+This project is still in developement !
+This page will be updated when we'll have stable releases.
