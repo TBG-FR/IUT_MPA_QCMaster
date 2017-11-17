@@ -59,7 +59,7 @@ CREATE TABLE qcmaster_QCM
     id_teacher  INT NOT NULL,
     title       VARCHAR(100) NOT NULL,
     topic       VARCHAR(100) NOT NULL,
-    link        VARCHAR(100) NOT NULL,
+    link        VARCHAR(100),
     
     PRIMARY KEY (id)
 )
@@ -76,7 +76,6 @@ CREATE TABLE qcmaster_Question
     id          INT NOT NULL AUTO_INCREMENT,
     id_QCM      INT NOT NULL,
     title       VARCHAR(100) NOT NULL,
-    nbAnswers   INT,
     
     PRIMARY KEY (id)
 )
@@ -118,3 +117,47 @@ alter TABLE qcmaster_Answer ADD CONSTRAINT FK_AnswerQuestion foreign KEY (id_que
 /*==============================================================*/
 /* INSERTING DEFAULT/TEST VALUES                                */
 /*==============================================================*/
+
+/* Let's create two Students here */
+INSERT INTO qcmaster_Student (email, firstname, lastname, password) VALUES
+('jojo.lacompote@miam.io','Jojo','LaCompote','LaCompote'),
+('dyviax@shlag.com','Dyvia','Fleury','$hlag');
+
+/* Let's create two Teachers here */
+INSERT INTO qcmaster_Teacher (email, firstname, lastname, password) VALUES
+('bruno.tellez@univ-lyon1.fr','Bruno','Tellez','BTe'), #This Teacher will automatically get the ID 1
+('hubert.delabath@oss117.fr','Hubert','Bonisseur de La Bath','OSS 117'); #This Teacher will automatically get the ID 2
+
+/* Let's create two QCM then, one for each Teacher */
+INSERT INTO qcmaster_QCM (id_teacher, title, topic, link) VALUES
+(1,'QCM sur le TouchDevelop','Informatique',NULL), #This QCM will automatically get the ID 1
+(2,'Les Meilleures Répliques d\'OSS 117','Films', NULL); #This QCM will automatically get the ID 2
+
+/* Let's make two Questions for each QCM */
+INSERT INTO qcmaster_Question (id_QCM, title) VALUES
+(1,'Qu\'est-ce que TouchDevelop ?'),
+(1,'Par qui a été développé TouchDevelop ?'),
+(2,'Comment est votre blanquette ? Les plats a base de viande, sont-ils de bonne qualité ?'),
+(2,'Que recherche notre bon vieux Hubert à l\'ambassade Allemande ?');
+
+/* Let's make 4 Answers for each Question */
+INSERT INTO qcmaster_Answer (id_question, proposition, correct) VALUES
+(1,'Un environnement de programmation',TRUE),
+(1,'Un écran tactile',FALSE),
+(1,'Un téléphone pour développeur',FALSE),
+(1,'Le meilleur language de programmation au monde !',FALSE),
+
+(2,'Microsoft',TRUE),
+(2,'Oracle',FALSE),
+(2,'Microsoft Research',TRUE),
+(2,'Apple',FALSE),
+
+(3,'Habile',FALSE),
+(3,'On m\'a dit le plus grand bien de vos harengs pomme à l\'huile',FALSE),
+(3,'La blanquette est bonne',TRUE),
+(3,'Le patron vous en mettra un ramequin, vous vous ferez une idée.',FALSE),
+
+(4,'Un costume',FALSE),
+(4,'Heimrich le hippie',FALSE),
+(4,'Sa secrétaire juive',FALSE),
+(4,'L\'amicale des anciens nazis',TRUE);
