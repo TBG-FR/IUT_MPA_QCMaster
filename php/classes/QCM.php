@@ -51,7 +51,7 @@ class QCM {
      * @param null : This function needs no parameters
      * @return null : This function returns nothing
      */
-    public function constructFromDB($id){
+    public static function constructFromDB($id){
         
         $db = new Database();
         //request for qcm infos
@@ -60,34 +60,33 @@ class QCM {
         $rows = $db->single();
         
         //affect results in Attributes
-        $this->id=$rows['id'];
-        $this->teacher_id=$rows['id_teacher'];
-        $this->title=$rows['title'];
-        $this->topic=$rows['topic'];
-        $this->link=$rows['link'];
+        
+        $QCM=new QCM();
+        
+        $QCM->id=$rows['id'];
+        $QCM->teacher_id=$rows['id_teacher'];
+        $QCM->title=$rows['title'];
+        $QCM->topic=$rows['topic'];
+        $QCM->link=$rows['link'];
         
         //request for questions
         $db->query('SELECT * FROM '. TABLE_QUESTION .' WHERE id_QCM = :id');
         $db->bind(':id', $id);
         $rows = $db->resultset();
         foreach($rows as $row){
-            $this->questions[]= new Question($row['id'],$row['title']);
+            $QCM->questions[]= new Question($row['id'],$row['title']);
             
             //request for answers
             $db->query('SELECT * FROM '. TABLE_ANSWER .' WHERE id_Question = :id');
             $db->bind(':id', $row['id']);
             $answs = $db->resultset();
             foreach($answs as $answ){
-                $this->questions[sizeof($this->questions)-1]->addAnswer(new Answer($answ['id_question'],$answ['correct'],$answ['proposition']));
+                $QCM->questions[sizeof($QCM->questions)-1]->addAnswer(new Answer($answ['id_question'],$answ['correct'],$answ['proposition']));
                 
             }
         }
         
-        
-        
-        
-        
-
+        return $QCM;
         
     }
     /**
@@ -95,7 +94,7 @@ class QCM {
      * @param null : This function needs no parameters
      * @return null : This function returns nothing
      */
-    public function constructFromScratch(){
+    public static function constructFromScratch(){
         $this->title="";
         $this->topic="";
     }

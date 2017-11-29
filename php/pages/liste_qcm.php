@@ -3,6 +3,9 @@
     // Place here the included/required files instructions
 require_once('../includes/all.inc.php');
 
+    $db=new Database();
+    $db->query('SELECT * FROM '. TABLE_QCM);
+    $rows = $db->resultset();
 ?>
 
 <!-- 'index.php' ~ Homepage -->
@@ -29,15 +32,18 @@ require_once('../includes/all.inc.php');
             <?php //include_once("header.php"); ?>
             <?php //include_once("navbar.php"); ?>
         </header>
-
+           
         <div class="content">
-            
-            <p class="title">Index.php - Title<br /></p>
-
-            <p class="text">
-                Index.php - Text<br />
-            </p>
-            
+            <ul class="qcm_list">
+            <?php
+            foreach ($rows as $row){
+                
+                echo '<li class="qcm_list_element">'.'<div class="col-lg-2">'.$row['title']."</div>".'<div class="col-lg-10">'.'<a href="qcm_answer.php?id='.$row['id'].'" class="btn btn-primary" role="button" >Aller au QCM</a>'."</div>".'</li>';
+                
+            }
+            ?>
+            <ul/>
+          
         </div>
 
         <footer>

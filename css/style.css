@@ -78,10 +78,27 @@ strong { text-shadow: 1px 0px 1px currentColor; /* 1px 0px 0px pour enlever le "
 
 .content {
 
-    width: 95%;
+	text-align:center;
+	
+    /*width: 95%;
     text-align: center;
-    margin: auto;
+    margin: auto;*/
 
+}
+
+.qcm_list {
+  /*display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;*/
+  list-style: none;
+}
+
+.qcm_list_element {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background-color: #e9ecef;
+  border-radius: 0.25rem;
 }
 
 /*
