@@ -4,6 +4,7 @@
  * Class User
  * No further description needed
  */
+
 abstract class User {
     
     /* ----- -----  ----- ----- Attribute(s) ----- -----  ----- ----- */
@@ -11,27 +12,30 @@ abstract class User {
     /**
      * @var int : Unique id of the user
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string : Email of the user
      */
-    private $email;
+    protected $email;
 
     /**
      * @var string : Password of the user
      */
-    private $password;
+    protected $password;
 
     /**
      * @var string : Firstname of the user
      */
-    private $firstname;
+    protected $firstname;
 
     /**
      * @var string : Lastname of the user
      */
-    private $lastname;
+    protected $lastname;
+    
+    
+    protected $pdo;
     
     /* ----- -----  ----- ----- Constructor(s) ----- -----  ----- ----- */
 
@@ -48,9 +52,10 @@ abstract class User {
      * @param string $password : Given password
      * @return User : The created User instance
      */
-    public function constructByLogin($email,$password){
+    public static function  constructByLogin($email,$password){
         
-        // CODE => SECURIZE THE STRINGS, CHECK INTO DATABASE IF THE USER EXISTS, IF THE PASSWORD IS CORRECT
+        
+        
       
     }
     

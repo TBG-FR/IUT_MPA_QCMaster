@@ -1,10 +1,8 @@
 <?php
 
     // Place here the included/required files instructions
-    require_once('../includes/all.inc.php');
 
 ?>
-
 
 <!-- 'index.php' ~ Homepage -->
 

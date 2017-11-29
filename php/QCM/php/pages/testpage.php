@@ -1,10 +1,8 @@
 <?php
 
-    // Place here the included/required files instructions
-    require_once('../includes/all.inc.php');
-
+// Place here the included/required files instructions
+require_once('../includes/all.inc.php');
 ?>
-
 
 <!-- 'index.php' ~ Homepage -->
 
@@ -31,8 +29,31 @@
         <div class="content">
 
             <?php
+              $db = new Database();
+              if(isset($_POST['connexionForm']))
+              {
+                  try{
+                      $email = htmlspecialchars($_POST['email']);
+                      $password = htmlspecialchars($_POST['password']);
+                      //$_SESSION['user'] = new Student();
+                               $_SESSION['user']= Student :: constructByLogin($email,$password);
+                               echo $_SESSION['user']->getID().'<br>';
+                   
+                               echo $_SESSION['user']->getEmail().'<br>';
+                               echo $_SESSION['user']->getLname().'<br>';
+                               echo $_SESSION['user']->getFname().'<br>';
+                        
+                          
+                   
+                  } catch (Exception $ex) {
+                     echo $ex->getMessage();
+                  }
+              }
+              
+             //var_dump($_SESSION['user']);
+            
 
-
+        /*
             echo "<h2>Code HTML Généré par PHP (sans retour à la ligne)</h2>";
             
             echo "<div id='1'>
@@ -55,13 +76,15 @@
                       <button>Click</button> \r
                       <br /> \r
                       <a href='#link'>Link</a>
-                  </div> \r\n\n";
+                  </div> \r\n\n";*/
                   
-            //$db = new Database();
-
+          
+            
+            
+            /*
             echo "<h2>Insert a new record</h2>";
             //Firstly you need to instantiate a new database.
-            $db = new Database();
+            //$db = new Database();
             //Next we need to write our insert query. Notice how I’m using placeholders instead of the actual data parameters.
             $db->query('INSERT INTO ' . TABLE_TEST . ' (FName, LName, Age, Gender) VALUES (:fname, :lname, :age, :gender)');
             //Next we need to bind the data to the placeholders.
@@ -139,9 +162,29 @@
             $db->execute();
             //Before running the file, echo out the lastInsertId function so you will know that the query successfully ran when viewed in the browser.
             echo $db->rowCount();
-
+             */
             ?>
+            <h1>Bienvenue sur le site de QCM TBG  !</h1>
 
+			<h2>connectez vous pour acceder a votre espace perso</h2> 
+
+
+			<form method="post" action="">
+				<h3>email: </h3>
+
+				<input type="text" name="email"><br>
+
+				<h3>Mot de passe: </h3>
+
+				<input type="password" name="password"><br>
+				<br>
+
+				<input type="submit" value="connexion" name ="connexionForm"><br>
+
+				 <a href="inscription.php">pas encore inscrit ?</a> 
+
+
+		</form>
         </div>
 
         <footer>

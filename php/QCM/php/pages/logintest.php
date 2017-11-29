@@ -1,10 +1,9 @@
 <?php
 
-    // Place here the included/required files instructions
-    require_once('../includes/all.inc.php');
+// Place here the included/required files instructions
+require_once('../includes/all.inc.php');
 
 ?>
-
 
 <!-- 'index.php' ~ Homepage -->
 
@@ -15,7 +14,7 @@
     <head>
         <meta charset="UTF-8">
 
-        <title>QCMaster - Questionnaires à choix multiples</title>
+        <title>QCMaster - TESTS</title>
 
         <?php //include_once("head.php"); // Make all the CSS & JavaScript links ?>
 
@@ -29,13 +28,16 @@
         </header>
 
         <div class="content">
-            
-            <p class="title">Index.php - Title<br /></p>
 
-            <p class="text">
-                Index.php - Text<br />
-            </p>
+            <?php
+
+
+            $db = new Database();
             
+            //var_dump($db);
+
+            ?>
+
         </div>
 
         <footer>

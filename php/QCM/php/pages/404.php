@@ -1,12 +1,10 @@
 <?php
 
     // Place here the included/required files instructions
-    require_once('../includes/all.inc.php');
 
 ?>
 
-
-<!-- 'index.php' ~ Homepage -->
+<!-- '404.php' ~ Error 404 page -->
 
 <!doctype html>
 
@@ -15,7 +13,7 @@
     <head>
         <meta charset="UTF-8">
 
-        <title>QCMaster - Questionnaires à choix multiples</title>
+        <title>QCMaster - 404 Page not found</title>
 
         <?php //include_once("head.php"); // Make all the CSS & JavaScript links ?>
 
@@ -30,10 +28,10 @@
 
         <div class="content">
             
-            <p class="title">Index.php - Title<br /></p>
+            <p class="title">404.php - Title<br /></p>
 
             <p class="text">
-                Index.php - Text<br />
+                404.php - Text<br />
             </p>
             
         </div>
