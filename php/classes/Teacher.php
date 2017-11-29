@@ -1,28 +1,31 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of Teacher
- *
- * @author halim
+ * Class Teacher
+ * No further description needed
  */
-include 'User.php';
-
 class Teacher extends User {
-     function __constructByLogin($email,$password){
-          
-        $teacher= new Student();
+    
+    public static function constructByLogin($email,$password){
+         
+         /*
+         CODE
+        
+        $teacher= new Teacheetudent();
         $teacher->email = $email;
         $teacher->password = $password;
         
         return $teacher;
+        
+        CODE
+        */
     }
-    function __constructByRegister($firstname,$lastname,$email,$password){
+    
+    public static function constructByRegister($firstname,$lastname,$email,$password){
+         
+         /*
+         CODE
+        
         $teacher = new $teacher();
         $teacher->id = $id;
         $teacher->firstname = $firstname;
@@ -31,6 +34,9 @@ class Teacher extends User {
         $teacher->password = $password;
        
         return $teacher;
+        
+        CODE
+        */
    
     }
 }

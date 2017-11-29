@@ -48,11 +48,7 @@ abstract class User {
      * @param string $password : Given password
      * @return User : The created User instance
      */
-    public function constructByLogin($email,$password){
-        
-        // CODE => SECURIZE THE STRINGS, CHECK INTO DATABASE IF THE USER EXISTS, IF THE PASSWORD IS CORRECT
-      
-    }
+    public static function constructByLogin($email,$password){}
     
     /**
      * Constructor #2 : Creates the User instance by Registering
@@ -62,12 +58,7 @@ abstract class User {
      * @param string $password : Given password
      * @return User : The created User instance
      */
-    public function constructByRegister($firstname,$lastname,$email,$password){
-        
-        // CODE => SECURIZE THE STRINGS, CHECK INTO DATABASE IF THE USER EXISTS, AND CREATE THE NEW USER INTO DB
-        
-       
-    }
+    public static function constructByRegister($firstname,$lastname,$email,$password){}
     
     /* ----- -----  ----- ----- Accessor(s) ----- -----  ----- ----- */
     

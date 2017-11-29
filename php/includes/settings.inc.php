@@ -3,9 +3,9 @@
 /* ----- Database Configuration ----- */
 define("DB_HOST", "localhost");
 define("DB_PORT", "3306");
-define("DB_USER", "p1606602");
-define("DB_PASS", "11606602");
-define("DB_NAME", "p1606602");
+define("DB_USER", "root");  //p160000
+define("DB_PASS", "");      //1160000
+define("DB_NAME", "bdd");   //p160000
 define("DB_CHARSET", "utf8");
 
 /* ----- Database Tables Names ----- */
