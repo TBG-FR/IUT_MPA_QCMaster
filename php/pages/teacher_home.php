@@ -1,9 +1,10 @@
 <?php
 
     // Place here the included/required files instructions
-require_once('../includes/all.inc.php');
+    require_once('../includes/all.inc.php');
 
 ?>
+
 
 <!-- 'teacher_home.php' ~ Homepage for Teachers -->
 
