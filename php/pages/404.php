@@ -17,10 +17,7 @@
 
         <title>QCMaster - 404 Page not found</title>
 
-        <?php
-        /* Makes all the CSS & Javascript links */
-        include_once("../includes/head.inc.php");
-        ?>
+        <?php //include_once("head.php"); // Make all the CSS & JavaScript links ?>
 
     </head>
 
