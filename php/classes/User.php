@@ -4,7 +4,7 @@
  * Class User
  * No further description needed
  */
-class User {
+abstract class User {
     
     /* ----- -----  ----- ----- Attribute(s) ----- -----  ----- ----- */
     
@@ -51,12 +51,7 @@ class User {
     public function constructByLogin($email,$password){
         
         // CODE => SECURIZE THE STRINGS, CHECK INTO DATABASE IF THE USER EXISTS, IF THE PASSWORD IS CORRECT
-        
-        $user = new User();
-        $user->email = $email;
-        $user->password = $password;
-        
-        return $user;
+      
     }
     
     /**
@@ -71,14 +66,7 @@ class User {
         
         // CODE => SECURIZE THE STRINGS, CHECK INTO DATABASE IF THE USER EXISTS, AND CREATE THE NEW USER INTO DB
         
-        $user = new User();
-        $user->id = $id;
-        $user->firstname = $firstname;
-        $user->lastname = $lastname;
-        $user->email = $email;
-        $user->password = $password;
        
-        return $user;
     }
     
     /* ----- -----  ----- ----- Accessor(s) ----- -----  ----- ----- */
