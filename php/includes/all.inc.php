@@ -6,7 +6,7 @@
 
         /* Including Database class and creaating a Database instance */
         require_once('../classes/Database.php');
-        $db = new Database();
+        //$db = new Database();
         
         /* Including User related and QCM-related classes */
         require_once('../classes/User.php');

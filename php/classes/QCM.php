@@ -52,12 +52,42 @@ class QCM {
      * @return null : This function returns nothing
      */
     public function constructFromDB($id){
-        $this->id=$id;
-        $this->teacher_id=$id_teacher;
-        $this->title=$title;
-        $this->topic=$topic;
-        $this->link=$link;
-        $this->questions=$questions;
+        
+        $db = new Database();
+        //request for qcm infos
+        $db->query('SELECT * FROM '. TABLE_QCM .' WHERE id = :id');
+        $db->bind(':id', $id);
+        $rows = $db->single();
+        
+        //affect results in Attributes
+        $this->id=$rows['id'];
+        $this->teacher_id=$rows['id_teacher'];
+        $this->title=$rows['title'];
+        $this->topic=$rows['topic'];
+        $this->link=$rows['link'];
+        
+        //request for questions
+        $db->query('SELECT * FROM '. TABLE_QUESTION .' WHERE id_QCM = :id');
+        $db->bind(':id', $id);
+        $rows = $db->resultset();
+        foreach($rows as $row){
+            $this->questions[]= new Question($row['id'],$row['title']);
+            
+            //request for answers
+            $db->query('SELECT * FROM '. TABLE_ANSWER .' WHERE id_Question = :id');
+            $db->bind(':id', $row['id']);
+            $answs = $db->resultset();
+            foreach($answs as $answ){
+                $this->questions[sizeof($this->questions)-1]->addAnswer(new Answer($answ['id_question'],$answ['correct'],$answ['proposition']));
+                
+            }
+        }
+        
+        
+        
+        
+        
+
         
     }
     /**
@@ -235,11 +265,21 @@ class QCM {
 //     * @param null : This function needs no parameters
 //     * @return null : This function returns nothing
 //     */
-//    private function display(){
-//        
-//        //CODE
-//        
-//    }
+    public function display(){
+        echo '<h2>'.$this->title.'<h2>';
+        echo '<h3>'.$this->topic.'<h3></br>';
+        foreach ($this->questions as $question){
+            echo '</br>'.$question->getTitle().'</br>';
+            foreach($question->getAnswers() as $answer){
+                echo $answer->getProposition()."       ".$answer->getCorrect()."</br>";
+                
+            }
+        }
+        
+        
+    }
+    
+    
 
     /* ----- -----  ----- ----- End of Class ----- -----  ----- ----- */
 }

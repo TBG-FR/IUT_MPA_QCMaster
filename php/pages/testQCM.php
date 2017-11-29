@@ -14,7 +14,7 @@ require_once('../includes/all.inc.php');
     </head>
     <body>
         <?php
-            $a=new Answer(1,false,"cette réponse est fausse");
+            /*$a=new Answer(1,false,"cette réponse est fausse");
             $b=new Answer(2,true,"cette réponse est vraie");
             $c=new Answer(3,false,"cette réponse est fausse");
             
@@ -22,10 +22,10 @@ require_once('../includes/all.inc.php');
             $question->addAnswer($a);
             $question->addAnswer($b);
             $question->addAnswer($c);
+            */
             
             
-            
-            $QCM1=new QCM();
+            $QCM1=new QCM();/*
             $QCM1->constructFromScratch();
             $QCM1->addQuestion($question);
             $QCM1->setTitle("QCM test");
@@ -37,7 +37,15 @@ require_once('../includes/all.inc.php');
             echo 'le sujet de ce qcm est : '.$QCM1->getTopic().'<br/><br/>';
             
             var_dump($QCM1->getQuestions());
-           
+           */
+            
+        
+            $qcm=new QCM();
+            $qcm->constructFromDB(2);
+            
+            $qcm->display();
+        
+        
             
         ?>
     </body>
