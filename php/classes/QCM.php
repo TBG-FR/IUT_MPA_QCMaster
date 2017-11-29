@@ -45,11 +45,60 @@ class QCM {
      * @param null : This function needs no parameters
      * @return null : This function returns nothing
      */
-    public function __construct(){
+    public function __construct(){}
+    /**
+     * QCM's Constructor : for the qcm create with de DB
+     * @param null : This function needs no parameters
+     * @return null : This function returns nothing
+     */
+    public static function constructFromDB($id){
         
-        // CODE
+        $db = new Database();
+        //request for qcm infos
+        $db->query('SELECT * FROM '. TABLE_QCM .' WHERE id = :id');
+        $db->bind(':id', $id);
+        $rows = $db->single();
+        
+        //affect results in Attributes
+        
+        $QCM=new QCM();
+        
+        $QCM->id=$rows['id'];
+        $QCM->teacher_id=$rows['id_teacher'];
+        $QCM->title=$rows['title'];
+        $QCM->topic=$rows['topic'];
+        $QCM->link=$rows['link'];
+        
+        //request for questions
+        $db->query('SELECT * FROM '. TABLE_QUESTION .' WHERE id_QCM = :id');
+        $db->bind(':id', $id);
+        $rows = $db->resultset();
+        foreach($rows as $row){
+            $QCM->questions[]= new Question($row['id'],$row['title']);
+            
+            //request for answers
+            $db->query('SELECT * FROM '. TABLE_ANSWER .' WHERE id_Question = :id');
+            $db->bind(':id', $row['id']);
+            $answs = $db->resultset();
+            foreach($answs as $answ){
+                $QCM->questions[sizeof($QCM->questions)-1]->addAnswer(new Answer($answ['id_question'],$answ['correct'],$answ['proposition']));
+                
+            }
+        }
+        
+        return $QCM;
         
     }
+    /**
+     * QCM's Constructor : for the qcm create from scratch
+     * @param null : This function needs no parameters
+     * @return null : This function returns nothing
+     */
+    public static function constructFromScratch(){
+        $this->title="";
+        $this->topic="";
+    }
+            
     
     /* ----- -----  ----- ----- Accessor(s) ----- -----  ----- ----- */
     
@@ -137,6 +186,15 @@ class QCM {
     }
 
     /**
+     * Mutator 'setTopic' : Modify the title of that QCM
+     * @param string $title : The new title of that QCM
+     * @return null : This function returns nothing
+     */
+    function setTopic($topic) {
+        $this->topic = $topic;
+    }
+
+    /**
      * Mutator 'setLink' : Modify the link of that QCM
      * @param string $link : The new link of that QCM
      * @return null : This function returns nothing
@@ -172,10 +230,11 @@ class QCM {
 //     * @param Question $question
 //     * @return null : This function returns nothing
 //     */
-//    private function addQuestion($question){
-//        $this->questions[]=$question;
-//    }
-//
+     function addQuestion($question){
+        $this->questions[]=$question;
+        
+    }
+
 //    /**
 //     * Function 'saveIntoDB' : to save the QCM into the Database 
 //     * @param Database DB
@@ -205,11 +264,21 @@ class QCM {
 //     * @param null : This function needs no parameters
 //     * @return null : This function returns nothing
 //     */
-//    private function display(){
-//        
-//        //CODE
-//        
-//    }
+    public function display(){
+        echo '<h2>'.$this->title.'<h2>';
+        echo '<h3>'.$this->topic.'<h3></br>';
+        foreach ($this->questions as $question){
+            echo '</br>'.$question->getTitle().'</br>';
+            foreach($question->getAnswers() as $answer){
+                echo $answer->getProposition()."       ".$answer->getCorrect()."</br>";
+                
+            }
+        }
+        
+        
+    }
+    
+    
 
     /* ----- -----  ----- ----- End of Class ----- -----  ----- ----- */
 }
