@@ -5,8 +5,7 @@
 
 ?>
 
-
-<!-- '404.php' ~ Error 404 page -->
+<!-- 'student_home.php' ~ Homepage for Students -->
 
 <!doctype html>
 
@@ -15,9 +14,12 @@
     <head>
         <meta charset="UTF-8">
 
-        <title>QCMaster - 404 Page not found</title>
+        <title>QCMaster - Student Homepage</title>
 
-        <?php //include_once("head.php"); // Make all the CSS & JavaScript links ?>
+        <?php
+        /* Makes all the CSS & Javascript links */
+        include_once("../includes/head.inc.php");
+        ?>
 
     </head>
 
@@ -30,10 +32,10 @@
 
         <div class="content">
             
-            <p class="title">404.php - Title<br /></p>
+            <p class="title">Student Homepage<br /></p>
 
             <p class="text">
-                404.php - Text<br />
+                Student Homepage<br />
             </p>
             
         </div>

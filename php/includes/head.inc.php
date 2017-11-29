@@ -1,9 +1,6 @@
 <!-- CSS : Bootstrap -->
 <link href='../../css/bootstrap.css' rel='stylesheet' media='all' type='text/css'>
 
-<!-- CSS : Fancybox -->
-<link  href='../../css/jquery.fancybox.css' rel='stylesheet'>
-
 <!-- CSS : Custom -->
 <link href='../../css/style.css' rel='stylesheet' media='all' type='text/css'>
 
