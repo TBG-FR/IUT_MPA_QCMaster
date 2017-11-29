@@ -1,0 +1,95 @@
+/* Fichier CSS Custom */
+/* Nothing here for now */
+
+/* ----- Added Fonts & Font Modifications ----- */
+
+@font-face {
+    font-family: 'Archive';
+    src: url('../fonts/Archive.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Champagne';
+    src: url('../fonts/Champagne & Limousines.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Champagne'; /* Italic version */
+    src: url('../fonts/Champagne & Limousines Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'ChampagneBold';
+    src: url('../fonts/Champagne & Limousines Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ChampagneBold'; /* Italic version */
+    src: url('../fonts/Champagne & Limousines Bold Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* False bold, to get ChampagneBold in Bold */
+strong { text-shadow: 1px 0px 1px currentColor; /* 1px 0px 0px pour enlever le "flou" */ }
+
+/* ----- -----  Design Rules & Elements ----- ----- */
+
+.responsive_img {
+
+    display: block;
+    max-width: 100%;
+    /*height: auto;*/
+    margin: auto;
+
+}
+
+.title {
+
+    font-family: 'Archive','Trebuchet MS', Arial, sans-serif; /* Fonts, in order of appearance */
+    font-size: calc(1.5em + 5vh);
+
+}
+
+.text {
+
+    font-family: 'ChampagneBold','Trebuchet MS', Arial, sans-serif; /* Fonts, in order of appearance */
+    font-size: calc(1em + 2.5vh);
+
+}
+
+/* Creates an horizontal line after the element */
+.hline-bottom {
+    margin: auto;
+    width: 65%;
+    margin-top: 2.5vh;
+    padding-bottom: 2vh;
+    margin-bottom: 2.5vh;
+    border-bottom: 2px solid #000;
+}
+
+/* ----- -----  Page Content ----- ----- */
+
+.content {
+
+    width: 95%;
+    text-align: center;
+    margin: auto;
+
+}
+
+/*
+	ALL
+		THE
+			REST
+		---
+	CSS
+		CODE
+			HERE
+*/
