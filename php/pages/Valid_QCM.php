@@ -45,7 +45,33 @@ and open the template in the editor.
             }
             
             $repQCM->display();
+        
+        /* ----- ----- ----- Convert that Answer to TXT file ----- ----- ----- */
+        
+        // 'result_[QCM_ID]_[TryNumber]' (ex: If I answer the QCM #2 for the third time, it'll be 'result_3_2.txt')
+        // TO IMPLEMENT : TRY + USERNAME + ?
+        // TRY NUMBER IN THE SAME FILE ?
+        $filename = "results/user/result_" . $_SESSION['current_qcm']->getID() . ".txt";
+        
+        $result_file = fopen($filename, 'a');
+        
+        $txt_separator = "\r" . "----- ----- Other Try ----- -----" . "\r";
+        fwrite($result_file, $txt_separator);
+        
+        foreach ($repQCM->getQuestions() as $question){
             
+            /* QUESTION */
+                
+                foreach ($question->getAnswers() as $answer){
+                    
+                    /* REPONSES */
+                    
+                }
+            }
+        
+        echo"<h3>EOF</h3>";
+        
+        var_dump($_SESSION['current_qcm']);
             
             
         ?>
