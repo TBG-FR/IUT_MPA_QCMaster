@@ -103,6 +103,11 @@ class Question {
     function setTitle($title) {
         $this->title = $title;
     }
+    
+    function setAnswer($id,$value){
+        
+        
+    }
 
 //    /**
 //     * Mutator 'setAnswers' : Modify the answers array of that question

@@ -81,7 +81,7 @@ class QCM {
             $db->bind(':id', $row['id']);
             $answs = $db->resultset();
             foreach($answs as $answ){
-                $QCM->questions[sizeof($QCM->questions)-1]->addAnswer(new Answer($answ['id_question'],$answ['correct'],$answ['proposition']));
+                $QCM->questions[sizeof($QCM->questions)-1]->addAnswer(new Answer($answ['id'],$answ['correct'],$answ['proposition']));
                 
             }
         }
