@@ -95,8 +95,16 @@ class QCM {
      * @return null : This function returns nothing
      */
     public static function constructFromScratch(){
-        $this->title="";
-        $this->topic="";
+        $QCM=new QCM();
+        
+        $QCM->id=-1;
+        $QCM->title="Donnez un titre a votre QCM";
+        $QCM->topic="Choisissez un theme";
+        $QCM->addQuestion(new Question(-1,"Entrez l'intitule de votre question"));
+        $QCM->getQuestion(0)->addAnswer(new Answer(-1,0,"Ici entrez la reponse que vous voulez proposer"));
+        
+        return $QCM;
+        
     }
             
     
@@ -154,6 +162,15 @@ class QCM {
      */
     function getQuestions() {
         return $this->questions;
+    }
+    
+    /**
+     * Accessor 'getQuestions' : Returns the array containing all questions of that QCM
+     * @param null : This function needs no parameters
+     * @return array<Question>
+     */
+    function getQuestion($index) {
+        return $this->questions[$index];
     }
     
     /* ----- -----  ----- ----- Mutator(s) ----- -----  ----- ----- */
