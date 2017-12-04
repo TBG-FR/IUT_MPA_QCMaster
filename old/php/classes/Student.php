@@ -1,17 +1,18 @@
 <?php
 
-/**
- * Class Student
- * No further description needed
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-class Student extends User{
 
-    /**
-     * User's Constructor : Empty Constructor
-     * @param null : This function needs no parameters
-     * @return null : This function returns nothing
-     */
-    public function __construct(){}
+/**
+ * Description of Student
+ *
+ * @author halim
+ */
+
+class Student extends User {
     
     public static function constructByLogin($email,$password){
           
@@ -33,7 +34,7 @@ class Student extends User{
                 $student->id= $row['id'];
                 $student->lastname = $row['lastname'];
                 $student->firstname = $row['firstname'];
-                //var_dump($student);
+               // var_dump($student);
                 
               
                 return $student;
@@ -48,7 +49,7 @@ class Student extends User{
         }
     }
     
-    public static function constructByRegister($firstname,$lastname,$email,$password){
+    public function constructByRegister($firstname,$lastname,$email,$password){
         
        /* $student = new Student();
         $student->id = $id;
@@ -62,25 +63,19 @@ class Student extends User{
         $db->query("select * from qcmaster_student where email = :email  ");
         $db->bind(':email', $email);
         $row = $db->single();
-       // var_dump($row);
-        if ($row == NULL){
-            $student = new Student();
+        if ($row != NULL){
+             throw new Exception('Err_Register_UserExist');
+             
+        }else{
+              $student = new Student();
                 $student->email = $email;
                 $student->password = $password;
                 $student->lastname = $lastname;
                 $student->firstname = $firstname;
-                $db->query("INSERT INTO qcmaster_student (email, firstname, lastname, password) VALUES(:email,:firstname,:lastname,:password)");
-                $db->bind(':email', $email);
-                $db->bind(':firstname', $firstname); 
-                $db->bind(':lastname', $lastname);
-                $db->bind(':password', $password);
-                   $db->execute();
-                return $student;
-            
-             
-        }else{
-              
-            throw new Exception('Err_Register_UserExist') ;
+                $db->query("INSERT INTO qcmaster_student VALUES(:email,:firstname,:lastname,:password)");
+                var_dump(constructByLogin($email,$password));
+                
+      
             
         }
     }
