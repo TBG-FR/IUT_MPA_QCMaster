@@ -235,6 +235,19 @@ class QCM {
         
     }
 
+    /**
+     * Function 'calculateScore' : Correct the current QCM (assuming it is an "answer" QCM) 
+     * @param id $qcm_subject_id : The id of the "subject" QCM (aka the one with the right answers, used for correction)
+     * @return array : This function returns an array of two ints : the result and the maximum mark
+     */
+     function calculateScore($qcm_subject_id){
+         
+         /* TODO *//* Score Calculation */
+        
+         return(array(17,20)); /*TEMP*//*FAKE*/
+         
+    }
+
 //    /**
 //     * Function 'saveIntoDB' : to save the QCM into the Database 
 //     * @param Database DB
