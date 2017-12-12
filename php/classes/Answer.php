@@ -50,6 +50,21 @@ class Answer {
     }
 
     /**
+     * Accessor 'getIDtxt' : Returns the id of the answer, as a letter
+     * @param null : This function needs no parameters
+     * @return string (something like a char, in fact)
+     */
+    function getIDtxt() {
+        
+        $alphabet = range('a', 'z');
+        
+        if($this->id < 27) { return $alphabet[$this->id]; }
+        
+        else { return $this->id; }
+        
+    }
+
+    /**
      * Accessor 'getCorrect' : Returns the status of the answer
      * @param null : This function needs no parameters
      * @return bool
