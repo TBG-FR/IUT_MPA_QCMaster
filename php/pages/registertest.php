@@ -89,7 +89,7 @@
                   }
         }
               
-              
+              /*
                                
                                $bob = $_SESSION['user'];
                                
@@ -98,7 +98,7 @@
                                echo $_SESSION['user']->getLname().'<br>';
                                echo $_SESSION['user']->getFname().'<br>';
                                
-                             
+                             */
               
            
             
