@@ -102,19 +102,34 @@ and open the template in the editor.
         fwrite($result_file, $txt_separator);
         
         // Generates the results for this new try
+        $QCM_try = "\r";
+        
         foreach ($repQCM->getQuestions() as $question){
             
-            /* QUESTION */
+            /* ADD - IF condition for Answer or Answer(s) */
+            $QCM_try .= "Question " . $question->getID() . " - Answer(s): ";
                 
-                foreach ($question->getAnswers() as $answer){
-                    
-                    /* REPONSES */
-                    
-                }
+            foreach ($question->getAnswers() as $answer){
+                
+                if($answer->getCorrect() == true) { $QCM_try .= $answer->getIDtxt() . ", "; }
+                
             }
+            
+            $QCM_try = rtrim($QCM_try,", ");
+            $QCM_try .= "\r\r";
+            
+        }
+        
+        $score = $repQCM->calculateScore($repQCM->getID());
+        
+        $QCM_try .= "\r     => SCORE : " . $score[0] . "/" . $score[1] . "\r\r";
+        
+        fwrite($result_file, $QCM_try);
         
         echo"<h3>EOF</h3>";
         
+        // Deletes the current_qcm, to avoid errors later
+        //unset($_SESSION['current_qcm']);
         var_dump($_SESSION['current_qcm']);
             
         ?>
