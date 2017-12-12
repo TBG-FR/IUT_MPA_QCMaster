@@ -53,11 +53,55 @@ and open the template in the editor.
         // TRY NUMBER IN THE SAME FILE ?
         $filename = "results/user/result_" . $_SESSION['current_qcm']->getID() . ".txt";
         
-        $result_file = fopen($filename, 'a');
+        // If the file have already been generated => Simply opens the file in order to write inside it
+        if (file_exists($filename)) {
+            
+            $result_file = fopen($filename, 'a');
+            
+            // Determines the id of that try, by counting the previous ones
+            $try_id = substr_count(file_get_contents($filename),"Try") + 1;
         
-        $txt_separator = "\r" . "----- ----- Other Try ----- -----" . "\r";
+        }
+        
+        // Else (if the file is new (and empty, consequently) Opens the file in order to write inside it, and writes information about the QCM
+        else {
+            
+            // Opens the file in order to write inside it
+            $result_file = fopen($filename, 'a');
+        
+            // Generates the separator for this QCM's information
+            $QCM_info = "----- ----- QCM #" . $repQCM->getID() ." - Information ----- -----" . "\r\r";
+            $QCM_info .= "QCM N°" . $repQCM->getID() ." - " . $repQCM->getTopic() ." - " . $repQCM->getTitle() . "\r\r";
+        
+            // Generates the detailed questions/answers information
+            foreach ($repQCM->getQuestions() as $question){
+            
+                $QCM_info .= "Q" . $question->getID() . " ----- " . $question->getTitle() . "\n";
+                
+                foreach ($question->getAnswers() as $answer){
+            
+                    $QCM_info .= "    Réponse " . $answer->getIDtxt() . ": " . $answer->getProposition() . "\n";
+                    
+                }
+            
+                $QCM_info .= "\r";
+                
+                
+            }
+            
+            // Writes the generated information into the file
+            fwrite($result_file, $QCM_info);
+            
+            // Assigns the id at that try (which is the first)
+            $try_id = 1;
+        
+        }
+        
+        // Generates the separator for this new try
+        $txt_separator = "\r" . "----- ----- QCM #" . $repQCM->getID() ." - Try #$try_id ----- -----" . "\r";
         fwrite($result_file, $txt_separator);
         
+        // Generates the results for this new try
         foreach ($repQCM->getQuestions() as $question){
             
             /* QUESTION */
@@ -72,7 +116,6 @@ and open the template in the editor.
         echo"<h3>EOF</h3>";
         
         var_dump($_SESSION['current_qcm']);
-            
             
         ?>
     </body>
