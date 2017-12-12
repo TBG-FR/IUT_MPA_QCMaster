@@ -98,10 +98,10 @@ class QCM {
         $QCM=new QCM();
         
         $QCM->id=-1;
-        $QCM->title="Donnez un titre a votre QCM";
-        $QCM->topic="Choisissez un theme";
-        $QCM->addQuestion(new Question(-1,"Entrez l'intitule de votre question"));
-        $QCM->getQuestion(0)->addAnswer(new Answer(-1,0,"Ici entrez la reponse que vous voulez proposer"));
+        $QCM->title="";
+        $QCM->topic="";
+        $QCM->addQuestion(new Question(0,""));
+        $QCM->getQuestion(0)->addAnswer(new Answer(0,0,""));
         
         return $QCM;
         
@@ -162,6 +162,20 @@ class QCM {
      */
     function getQuestions() {
         return $this->questions;
+    }
+    
+    /**
+     * Accessor 'getQuestions' : Returns the array containing all questions of that QCM
+     * @param null : This function needs no parameters
+     * @return int
+     */
+    function getNbQuestions() {
+        $cpt=0;
+        foreach ($this->questions as $question){
+            $cpt++;
+        }
+        
+        return $cpt;
     }
     
     /**

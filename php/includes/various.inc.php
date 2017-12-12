@@ -19,7 +19,7 @@ function var_secure($string) {
 		{
 			//$string = mysql_real_escape_string($string); // deprecated, to remplace (with PDO::quote ? filter_input ?)
 			$string = addcslashes($string, '%_');
-            $string = htmlEntities($string, ENT_QUOTES);
+            $string = htmlentities($string, ENT_QUOTES);
 		}
 		
 		return $string;
