@@ -4,8 +4,6 @@
     require_once('../includes/all.inc.php');
     $db=new Database();
 
-}
-
 ?>
 
 <!-- ----- ----- 'qcm_answer.php' ~ Page for answering to a QCM ----- ----- -->
