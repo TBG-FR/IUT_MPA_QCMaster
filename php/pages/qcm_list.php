@@ -9,7 +9,7 @@
 
 ?>
 
-<!-- 'index.php' ~ Homepage -->
+<!-- ----- ----- 'qcm_list.php' ~ Displays a list with all public QCMs ----- ----- -->
 
 <!doctype html>
 
@@ -20,18 +20,15 @@
 
         <title>QCMaster - Questionnaires à choix multiples</title>
 
-        <?php
-        /* Makes all the CSS & Javascript links */
-        include_once("../includes/head.inc.php");
-        ?>
+        <?php include_once('../includes/head.inc.php'); // Make all the CSS & JavaScript links ?>
 
     </head>
 
     <body>
 
         <header>
-            <?php //include_once("header.php"); ?>
-            <?php //include_once("navbar.php"); ?>
+            <?php include_once('../includes/header.inc.php'); ?>
+            <?php include_once('../includes/navbar.inc.php'); ?>
         </header>
            
         <div class="content">
