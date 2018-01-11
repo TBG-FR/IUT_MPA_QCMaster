@@ -6,7 +6,7 @@
 ?>
 
 
-<!-- 'teacher_home.php' ~ Homepage for Teachers -->
+<!-- ----- ----- 'teacher_home.php' ~ Homepage for Teachers ----- ----- -->
 
 <!doctype html>
 
@@ -17,18 +17,15 @@
 
         <title>QCMaster - Teacher Homepage</title>
 
-        <?php
-        /* Makes all the CSS & Javascript links */
-        include_once("../includes/head.inc.php");
-        ?>
+        <?php include_once('../includes/head.inc.php'); // Make all the CSS & JavaScript links ?>
 
     </head>
 
     <body>
 
         <header>
-            <?php //include_once("header.php"); ?>
-            <?php //include_once("navbar.php"); ?>
+            <?php include_once('../includes/header.inc.php'); ?>
+            <?php include_once('../includes/navbar.inc.php'); ?>
         </header>
 
         <div class="content">

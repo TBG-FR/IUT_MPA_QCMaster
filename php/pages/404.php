@@ -5,8 +5,7 @@
 
 ?>
 
-
-<!-- '404.php' ~ Error 404 page -->
+<!-- ----- ----- '404.php' ~ Error 404 page ----- ----- -->
 
 <!doctype html>
 
@@ -17,7 +16,7 @@
 
         <title>QCMaster - 404 Page not found</title>
 
-        <?php //include_once("head.php"); // Make all the CSS & JavaScript links ?>
+        <?php include_once('../includes/head.inc.php'); // Make all the CSS & JavaScript links ?>
 
     </head>
 

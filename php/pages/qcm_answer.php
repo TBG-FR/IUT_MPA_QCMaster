@@ -13,13 +13,11 @@ if($_GET){
 
     $_SESSION['current_qcm'] = QCM::ConstructFromDB($_GET['id']);
 
-}
+<!-- ----- ----- 'qcm_answer.php' ~ Page for answering to a QCM ----- ----- -->
 
 
 
 ?>
-
-<!-- 'index.php' ~ Homepage -->
 
 <!doctype html>
 

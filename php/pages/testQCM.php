@@ -13,11 +13,6 @@ require_once('../includes/all.inc.php');
         <title></title>
     </head>
     <body>
-
-        <?php
-        /* Makes all the CSS & Javascript links */
-        include_once("../includes/head.inc.php");
-        ?>
         
         <?php
             /*$a=new Answer(1,false,"cette réponse est fausse");

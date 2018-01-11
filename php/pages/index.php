@@ -5,8 +5,7 @@
 
 ?>
 
-
-<!-- 'index.php' ~ Homepage -->
+<!-- ----- ----- 'index.php' ~ Homepage ----- ----- -->
 
 <!doctype html>
 
@@ -17,15 +16,15 @@
 
         <title>QCMaster - Questionnaires à choix multiples</title>
 
-        <?php //include_once("head.php"); // Make all the CSS & JavaScript links ?>
+        <?php include_once('../includes/head.inc.php'); // Make all the CSS & JavaScript links ?>
 
     </head>
 
     <body>
 
         <header>
-            <?php //include_once("header.php"); ?>
-            <?php //include_once("navbar.php"); ?>
+            <?php include_once('../includes/header.inc.php'); ?>
+            <?php include_once('../includes/navbar.inc.php'); ?>
         </header>
 
         <div class="content">
