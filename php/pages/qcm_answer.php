@@ -1,22 +1,21 @@
 <?php
 
     // Place here the included/required files instructions
-require_once('../includes/all.inc.php');
-$db=new Database();
+    require_once('../includes/all.inc.php');
+    $db=new Database();
 
-if($_GET){
-    
-    /*
-    $db->$db->query('SELECT * FROM '. TABLE_QCM .' WHERE id_QCM = :id');
-    $db->bind(':id', $_GET['id']);
-    $rows = $db->resultset();*/
+}
 
-    $_SESSION['current_qcm'] = QCM::ConstructFromDB($_GET['id']);
+?>
 
 <!-- ----- ----- 'qcm_answer.php' ~ Page for answering to a QCM ----- ----- -->
 
+<?php /* ----- Errors management for this page ----- */
 
+    if($_GET) { $_SESSION['current_qcm'] = QCM::ConstructFromDB($_GET['id']); }
 
+    else { /* TODO : REDIRECT TO 404 */ }
+    
 ?>
 
 <!doctype html>
@@ -26,20 +25,17 @@ if($_GET){
     <head>
         <meta charset="UTF-8">
 
-        <title>QCMaster - Questionnaires à choix multiples</title>
+        <title>QCMaster - Réponse à un QCM</title>
 
-        <?php
-        /* Makes all the CSS & Javascript links */
-        include_once("../includes/head.inc.php");
-        ?>
+        <?php include_once('../includes/head.inc.php'); // Make all the CSS & JavaScript links ?>
 
     </head>
 
     <body>
 
         <header>
-            <?php //include_once("header.php"); ?>
-            <?php //include_once("navbar.php"); ?>
+            <?php include_once('../includes/header.inc.php'); ?>
+            <?php include_once('../includes/navbar.inc.php'); ?>
         </header>
         
         <div class="content">
