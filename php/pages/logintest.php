@@ -38,21 +38,29 @@
                       $email = htmlspecialchars($_POST['email']);
                       $password = htmlspecialchars($_POST['password']);
                       //$_SESSION['user'] = new Student();
-                               $_SESSION['user']= Student :: constructByLogin($email,$password);
-                               echo $_SESSION['user']->getID().'<br>';
-                   
-                               echo $_SESSION['user']->getEmail().'<br>';
-                               echo $_SESSION['user']->getLname().'<br>';
-                               echo $_SESSION['user']->getFname().'<br>';
-                        
-                          
-                   
+                               $_SESSION['user'] = Student::constructByLogin($email,$password);
+                               
+                               echo '<br>bg';
+                               
+                              // var_dump($_SESSION['user']);
+       
                   } catch (Exception $ex) {
                      echo $ex->getMessage();
                   }
               }
               
-             //var_dump($_SESSION['user']);
+              /*
+                               
+                               $bob = $_SESSION['user'];
+                               
+                               echo $_SESSION['user']->getID().'<br>';
+                               echo $_SESSION['user']->getEmail().'<br>';
+                               echo $_SESSION['user']->getLname().'<br>';
+                               echo $_SESSION['user']->getFname().'<br>';
+                               
+                             
+              
+           */
             
 /* ---------------------------------------------------------------------------------------------- */
 
@@ -74,7 +82,7 @@
 
 				<input type="submit" value="connexion" name ="connexionForm"><br>
 
-				 <a href="inscription.php">pas encore inscrit ?</a> 
+				 <a href="registertest.php">pas encore inscrit ?</a> 
 
 
 		</form>

@@ -4,7 +4,8 @@
  * Class User
  * No further description needed
  */
-class User {
+
+abstract class User {
     
     /* ----- -----  ----- ----- Attribute(s) ----- -----  ----- ----- */
     
@@ -33,6 +34,9 @@ class User {
      */
     protected $lastname;
     
+    
+    protected $pdo;
+    
     /* ----- -----  ----- ----- Constructor(s) ----- -----  ----- ----- */
 
     /**
@@ -48,7 +52,12 @@ class User {
      * @param string $password : Given password
      * @return User : The created User instance
      */
-    public static function constructByLogin($email,$password){}
+    public static function  constructByLogin($email,$password){
+        
+        
+        
+      
+    }
     
     /**
      * Constructor #2 : Creates the User instance by Registering
@@ -58,7 +67,12 @@ class User {
      * @param string $password : Given password
      * @return User : The created User instance
      */
-    public static function constructByRegister($firstname,$lastname,$email,$password){}
+    public function constructByRegister($firstname,$lastname,$email,$password){
+        
+        // CODE => SECURIZE THE STRINGS, CHECK INTO DATABASE IF THE USER EXISTS, AND CREATE THE NEW USER INTO DB
+        
+       
+    }
     
     /* ----- -----  ----- ----- Accessor(s) ----- -----  ----- ----- */
     
@@ -67,7 +81,7 @@ class User {
      * @param null : This function needs no parameters
      * @return int
      */
-    public function getID() {
+    function getID() {
         return $this->id;
     }
     
@@ -76,7 +90,7 @@ class User {
      * @param null : This function needs no parameters
      * @return string
      */
-    public function getFname() {
+    function getFname() {
         return $this->firstname;
     }
     
@@ -85,7 +99,7 @@ class User {
      * @param null : This function needs no parameters
      * @return string
      */
-    public function getLname() {
+    function getLname() {
         return $this->lastname;
     }
     
@@ -94,7 +108,7 @@ class User {
      * @param null : This function needs no parameters
      * @return string
      */
-    public function getEmail() {
+    function getEmail() {
         return $this->email;
     }
     
@@ -103,7 +117,7 @@ class User {
      * @param null : This function needs no parameters
      * @return string
      */
-    public function getPassword() {
+    function getPassword() {
         return $this->password;
     }
     
@@ -114,7 +128,7 @@ class User {
      * @param int $id : The new id of that question
      * @return null : This function returns nothing
      */
-    public function setID($id) {
+    function setID($id) {
         $this->id = $id;
     }
 
@@ -123,7 +137,7 @@ class User {
      * @param string $firstname : The new firstname of that User
      * @return null : This function returns nothing
      */
-   public function setFirstname($firstname) {
+    function setFirstname($firstname) {
         $this->firstname = $firstname;
     }
 
@@ -132,7 +146,7 @@ class User {
      * @param string $lastname : The new lastname of that User
      * @return null : This function returns nothing
      */
-    public function setLastname($lastname) {
+    function setLastname($lastname) {
         $this->lastname = $lastname;
     }
 
@@ -141,7 +155,7 @@ class User {
      * @param string $email : The new email of that User
      * @return null : This function returns nothing
      */
-    public function setEmail($email) {
+    function setEmail($email) {
         $this->email = $email;
     }
 
@@ -150,7 +164,7 @@ class User {
      * @param string $password : The new password of that User
      * @return null : This function returns nothing
      */
-    public function setPassword($password) {
+    function setPassword($password) {
         $this->password = $password;
     }
     
