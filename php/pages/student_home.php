@@ -32,7 +32,7 @@
             <p class="title">Student Homepage<br /></p>
 
             <p class="text">
-                Student Homepage<br />
+                Student Homepage : Login OR Buttons<br />
             </p>
             
         </div>

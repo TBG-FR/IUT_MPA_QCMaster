@@ -29,11 +29,11 @@
 
         <div class="content">
             
-            <p class="title">Index.php - Title<br /></p>
-
-            <p class="text">
-                Index.php - Text<br />
-            </p>
+            <p class="title">Index.php - Titre<br /></p>
+            
+            <a class="title btn btn-lg btn-primary" href="student_home.php">Étudiant</a>
+            
+            <a class="title btn btn-lg btn-secondary" href="teacher_home.php">Enseignant</a>
             
         </div>
 

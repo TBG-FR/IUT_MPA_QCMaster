@@ -33,7 +33,7 @@
             <p class="title">Teacher Homepage<br /></p>
 
             <p class="text">
-                Teacher Homepage<br />
+                Teacher Homepage : Login OR Buttons<br />
             </p>
             
         </div>
