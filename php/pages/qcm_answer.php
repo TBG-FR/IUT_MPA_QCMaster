@@ -39,18 +39,22 @@
         </header>
         
         <div class="content">
-            <form>
+            
+            
+            
+            <form action="Valid_QCM.php" method="POST">
                 <?php
                         foreach ($_SESSION['current_qcm']->getQuestions() as $question){
                             echo '<div class="question hline-bottom"><label class="question_title">'.$question->getTitle().'</label>';
                             foreach ($question->getAnswers() as $answer){
-                                echo '<div class="form-check "><label class="form-check-label"><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">'.$answer->getProposition() .'</label></div>';
+                                echo '<div class="form-check "><label class="form-check-label"><input class="form-check-input" type="checkbox" name="'.$question->getID().'[]" value="'.$answer->getID().'">'.$answer->getProposition().'</label></div>';
                             }
                             echo '</div>';
                         }
                 
                 
                 
+                        
                 
                 
                 ?>

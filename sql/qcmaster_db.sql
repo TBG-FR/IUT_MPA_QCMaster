@@ -89,12 +89,12 @@ COLLATE utf8_bin;
 /*==============================================================*/
 CREATE TABLE qcmaster_Answer
 (
-    id          INT NOT NULL AUTO_INCREMENT,
+    id          INT NOT NULL,/*AUTO_INCREMENT*/
     id_question INT NOT NULL,
     proposition VARCHAR(100) NOT NULL,
     correct     BOOLEAN,
     
-    PRIMARY KEY (id)
+    PRIMARY KEY (id,id_question)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8
@@ -125,13 +125,13 @@ INSERT INTO qcmaster_Student (email, firstname, lastname, password) VALUES
 
 /* Let's create two Teachers here */
 INSERT INTO qcmaster_Teacher (email, firstname, lastname, password) VALUES
-('bruno.tellez@univ-lyon1.fr','Bruno','Tellez','BTe'), #This Teacher will automatically get the ID 1
-('hubert.delabath@oss117.fr','Hubert','Bonisseur de La Bath','OSS 117'); #This Teacher will automatically get the ID 2
+('bruno.tellez@univ-lyon1.fr','Bruno','Tellez','BTe'), /*This Teacher will automatically get the ID 1*/
+('hubert.delabath@oss117.fr','Hubert','Bonisseur de La Bath','OSS 117'); /*This Teacher will automatically get the ID 2*/
 
 /* Let's create two QCM then, one for each Teacher */
 INSERT INTO qcmaster_QCM (id_teacher, title, topic, link) VALUES
-(1,'QCM sur le TouchDevelop','Informatique',NULL), #This QCM will automatically get the ID 1
-(2,'Les Meilleures Répliques d\'OSS 117','Films', NULL); #This QCM will automatically get the ID 2
+(1,'QCM sur le TouchDevelop','Informatique',NULL), /*This QCM will automatically get the ID 1*/
+(2,'Les Meilleures Répliques d\'OSS 117','Films', NULL); /*This QCM will automatically get the ID 2*/
 
 /* Let's make two Questions for each QCM */
 INSERT INTO qcmaster_Question (id_QCM, title) VALUES
@@ -141,23 +141,23 @@ INSERT INTO qcmaster_Question (id_QCM, title) VALUES
 (2,'Que recherche notre bon vieux Hubert à l\'ambassade Allemande ?');
 
 /* Let's make 4 Answers for each Question */
-INSERT INTO qcmaster_Answer (id_question, proposition, correct) VALUES
-(1,'Un environnement de programmation',TRUE),
-(1,'Un écran tactile',FALSE),
-(1,'Un téléphone pour développeur',FALSE),
-(1,'Le meilleur language de programmation au monde !',FALSE),
+INSERT INTO qcmaster_Answer (id, id_question, proposition, correct) VALUES
+(1,1,'Un environnement de programmation',TRUE),
+(2,1,'Un écran tactile',FALSE),
+(3,1,'Un téléphone pour développeur',FALSE),
+(4,1,'Le meilleur language de programmation au monde !',FALSE),
 
-(2,'Microsoft',TRUE),
-(2,'Oracle',FALSE),
-(2,'Microsoft Research',TRUE),
-(2,'Apple',FALSE),
+(1,2,'Microsoft',TRUE),
+(2,2,'Oracle',FALSE),
+(3,2,'Microsoft Research',TRUE),
+(4,2,'Apple',FALSE),
 
-(3,'Habile',FALSE),
-(3,'On m\'a dit le plus grand bien de vos harengs pomme à l\'huile',FALSE),
-(3,'La blanquette est bonne',TRUE),
-(3,'Le patron vous en mettra un ramequin, vous vous ferez une idée.',FALSE),
+(1,3,'Habile',FALSE),
+(2,3,'On m\'a dit le plus grand bien de vos harengs pomme à l\'huile',FALSE),
+(3,3,'La blanquette est bonne',TRUE),
+(4,3,'Le patron vous en mettra un ramequin, vous vous ferez une idée.',FALSE),
 
-(4,'Un costume',FALSE),
-(4,'Heimrich le hippie',FALSE),
-(4,'Sa secrétaire juive',FALSE),
-(4,'L\'amicale des anciens nazis',TRUE);
+(1,4,'Un costume',FALSE),
+(2,4,'Heimrich le hippie',FALSE),
+(3,4,'Sa secrétaire juive',FALSE),
+(4,4,'L\'amicale des anciens nazis',TRUE);

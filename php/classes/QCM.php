@@ -81,7 +81,7 @@ class QCM {
             $db->bind(':id', $row['id']);
             $answs = $db->resultset();
             foreach($answs as $answ){
-                $QCM->questions[sizeof($QCM->questions)-1]->addAnswer(new Answer($answ['id_question'],$answ['correct'],$answ['proposition']));
+                $QCM->questions[sizeof($QCM->questions)-1]->addAnswer(new Answer($answ['id'],$answ['correct'],$answ['proposition']));
                 
             }
         }
@@ -95,8 +95,16 @@ class QCM {
      * @return null : This function returns nothing
      */
     public static function constructFromScratch(){
-        $this->title="";
-        $this->topic="";
+        $QCM=new QCM();
+        
+        $QCM->id=-1;
+        $QCM->title="";
+        $QCM->topic="";
+        $QCM->addQuestion(new Question(0,""));
+        $QCM->getQuestion(0)->addAnswer(new Answer(0,0,""));
+        
+        return $QCM;
+        
     }
             
     
@@ -154,6 +162,29 @@ class QCM {
      */
     function getQuestions() {
         return $this->questions;
+    }
+    
+    /**
+     * Accessor 'getQuestions' : Returns the array containing all questions of that QCM
+     * @param null : This function needs no parameters
+     * @return int
+     */
+    function getNbQuestions() {
+        $cpt=0;
+        foreach ($this->questions as $question){
+            $cpt++;
+        }
+        
+        return $cpt;
+    }
+    
+    /**
+     * Accessor 'getQuestions' : Returns the array containing all questions of that QCM
+     * @param null : This function needs no parameters
+     * @return array<Question>
+     */
+    function getQuestion($index) {
+        return $this->questions[$index];
     }
     
     /* ----- -----  ----- ----- Mutator(s) ----- -----  ----- ----- */
