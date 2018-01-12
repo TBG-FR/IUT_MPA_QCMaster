@@ -105,13 +105,13 @@ COLLATE utf8_bin;
 /* ADDING CONSTRAINTS (FOREIGN KEYS)                            */
 /*==============================================================*/
 alter TABLE qcmaster_QCM ADD CONSTRAINT FK_QCMTeacher foreign KEY (id_teacher)
-      references qcmaster_Teacher (id) on delete restrict on update restrict;
+      references qcmaster_Teacher (id) on delete CASCADE on update CASCADE;
 	  
 alter TABLE qcmaster_Question ADD CONSTRAINT FK_QuestionQCM foreign KEY (id_QCM)
-      references qcmaster_QCM (id) on delete restrict on update restrict;
+      references qcmaster_QCM (id) on delete CASCADE on update CASCADE;
 	  
 alter TABLE qcmaster_Answer ADD CONSTRAINT FK_AnswerQuestion foreign KEY (id_question)
-      references qcmaster_Question (id) on delete restrict on update restrict;
+      references qcmaster_Question (id) on delete CASCADE on update CASCADE;
 	  
 
 /*==============================================================*/
