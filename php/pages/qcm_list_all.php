@@ -17,7 +17,7 @@
     <head>
         <meta charset="UTF-8">
 
-        <title>QCMaster - Questionnaires à choix multiples</title>
+        <title>QCMaster - Liste des QCM</title>
 
         <?php include_once('../includes/head.inc.php'); // Make all the CSS & JavaScript links ?>
 
@@ -31,7 +31,7 @@
         </header>
            
         <div class="content">
-            <ul class="qcm_list">
+            <ul class="qcm_list student">
             
                 <?php
                 
@@ -41,13 +41,20 @@
                 foreach ($rows as $row){
                     
                     echo "
-                    <li class='qcm_list_element'>
-                        <div class='col-lg-2'>".$row['title']."</div>
-                        <div class='col-lg-10'><a href='qcm_answer.php?id=".$row['id']."' class='btn btn-primary' role='button'>Aller au QCM</a></div>
-                    </li>";                
+                    <li class='list_element student'>
+                    
+                        <span class='col-lg-2 topic'>".$row['topic']."</span>
+                        <span class='col-lg-7 name'>".$row['title']."</span>
+                        <span class='col-lg-3 button'>
+                            <a href='qcm_answer.php?id=".$row['id']."' class='btn btn-primary' role='button'>Répondre à ce QCM</a>
+                        </span>
+                        
+                    </li>";
                 }
                 
                 ?>
+                
+                <a class="btn btn-lg btn-primary" href="student_home.php">Retour à l'accueil Étudiant</a>
                 
             </ul>
           
