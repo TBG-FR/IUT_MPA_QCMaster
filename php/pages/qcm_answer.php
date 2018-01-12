@@ -2,13 +2,15 @@
 
     // Place here the included/required files instructions
     require_once('../includes/all.inc.php');
+    require_once('../includes/student_only.php');
+
     $db=new Database();
 
 ?>
 
 <!-- ----- ----- 'qcm_answer.php' ~ Page for answering to a QCM ----- ----- -->
 
-<?php /* ----- Errors management for this page ----- */
+<?php /* ----- Errors & Parameters management for this page ----- */
 
     if($_GET) { $_SESSION['current_qcm'] = QCM::ConstructFromDB($_GET['id']); }
 
@@ -38,9 +40,7 @@
         
         <div class="content">
             
-            
-            
-            <form action="Valid_QCM.php" method="POST">
+            <form method='POST' action='Valid_QCM.php'>
                 <?php
                         foreach ($_SESSION['current_qcm']->getQuestions() as $question){
                             echo '<div class="question hline-bottom"><label class="question_title">'.$question->getTitle().'</label>';
@@ -56,7 +56,7 @@
                 
                 
                 ?>
-                <a href="liste_qcm.php" class="btn btn-outline-secondary" role="button" >Back</a>
+                <a href="liste_qcm.php" class="btn btn-outline-secondary" role="button" >Retour à la liste</a>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 
                 

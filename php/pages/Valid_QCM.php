@@ -2,11 +2,7 @@
 require_once('../includes/all.inc.php');
 $db=new Database();?>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -48,10 +44,13 @@ and open the template in the editor.
         
         /* ----- ----- ----- Convert that Answer to TXT file ----- ----- ----- */
         
+        $username = $_SESSION['user']->getFname().$_SESSION['user']->getLname();
+        
+        // IF the directory doesn't exist, create it
+        if(is_dir("results/".$username) == false) { mkdir("results/".$username); }
+        
         // 'result_[QCM_ID]_[TryNumber]' (ex: If I answer the QCM #2 for the third time, it'll be 'result_3_2.txt')
-        // TO IMPLEMENT : TRY + USERNAME + ?
-        // TRY NUMBER IN THE SAME FILE ?
-        $filename = "results/user/result_" . $_SESSION['current_qcm']->getID() . ".txt";
+        $filename = "results/".$username."/result_" . $_SESSION['current_qcm']->getID() . ".txt";
         
         // If the file have already been generated => Simply opens the file in order to write inside it
         if (file_exists($filename)) {

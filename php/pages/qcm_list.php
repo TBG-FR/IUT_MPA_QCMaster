@@ -2,10 +2,9 @@
 
     // Place here the included/required files instructions
     require_once('../includes/all.inc.php');
+    require_once('../includes/student_only.php');
 
     $db=new Database();
-    $db->query('SELECT * FROM '. TABLE_QCM);
-    $rows = $db->resultset();
 
 ?>
 
@@ -35,6 +34,9 @@
             <ul class="qcm_list">
             
                 <?php
+                
+                $db->query('SELECT * FROM '. TABLE_QCM);
+                $rows = $db->resultset();
             
                 foreach ($rows as $row){
                     
@@ -47,12 +49,12 @@
                 
                 ?>
                 
-            <ul/>
+            </ul>
           
         </div>
 
         <footer>
-            <?php //include_once("footer.php"); ?>
+            <?php include_once('../includes/footer.inc.php'); ?>
         </footer>
 
     </body>

@@ -3,6 +3,8 @@
     // Place here the included/required files instructions
     require_once('../includes/all.inc.php');
 
+    $db = new Database();
+
 ?>
 
 
@@ -15,7 +17,7 @@
     <head>
         <meta charset="UTF-8">
 
-        <title>QCMaster - Teacher Homepage</title>
+        <title>QCMaster - Espace Enseignant</title>
 
         <?php include_once('../includes/head.inc.php'); // Make all the CSS & JavaScript links ?>
 
@@ -30,16 +32,12 @@
 
         <div class="content">
             
-            <p class="title">Teacher Homepage<br /></p>
-
-            <p class="text">
-                Teacher Homepage : Login OR Buttons<br />
-            </p>
+            /* TODO : COPY THE CONTENT OF 'student_home.php' AND ADAPT IT */
             
         </div>
 
         <footer>
-            <?php //include_once("footer.php"); ?>
+            <?php include_once('../includes/footer.inc.php'); ?>
         </footer>
 
     </body>

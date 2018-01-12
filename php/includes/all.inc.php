@@ -4,7 +4,7 @@
         require_once('settings.inc.php');
         require_once('various.inc.php');
 
-        /* Including Database class and creaating a Database instance */
+        /* Including Database class and creating a Database instance */
         require_once('../classes/Database.php');
         //$db = new Database();
         
@@ -17,5 +17,6 @@
         require_once('../classes/Answer.php');
 
         session_start();
+        require_once('logout.inc.php');
 
 // End of file ~ We don't close the PHP tag here, in order to avoid inserting invisible characters

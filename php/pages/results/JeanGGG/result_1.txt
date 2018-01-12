@@ -1,0 +1,11 @@
+----- ----- QCM #1 - Information ----- -----QCM N°1 - Informatique - QCM sur le TouchDevelopQ1 ----- Qu'est-ce que TouchDevelop ?
+    Réponse b: Un environnement de programmation
+    Réponse c: Un écran tactile
+    Réponse d: Un téléphone pour développeur
+    Réponse e: Le meilleur language de programmation au monde !
+Q2 ----- Par qui a été développé TouchDevelop ?
+    Réponse b: Microsoft
+    Réponse c: Oracle
+    Réponse d: Microsoft Research
+    Réponse e: Apple
+----- ----- QCM #1 - Try #1 ----- -----Question 1 - Answer(s): b, dQuestion 2 - Answer(s): b, d     => SCORE : 17/20----- ----- QCM #1 - Try #2 ----- -----Question 1 - Answer(s): b, dQuestion 2 - Answer(s): b, d     => SCORE : 17/20

@@ -29,16 +29,14 @@
 
         <div class="content">
             
-            <p class="title">Index.php - Titre<br /></p>
+            <a class="title btn btn-lg btn-primary" href="php/pages/student_home.php">Étudiant</a>
             
-            <a class="title btn btn-lg btn-primary" href="student_home.php">Étudiant</a>
-            
-            <a class="title btn btn-lg btn-secondary" href="teacher_home.php">Enseignant</a>
+            <a class="title btn btn-lg btn-secondary" href="php/pages/teacher_home.php">Enseignant</a>
             
         </div>
 
         <footer>
-            <?php //include_once("footer.php"); ?>
+            <?php include_once('../includes/footer.inc.php'); ?>
         </footer>
 
     </body>
