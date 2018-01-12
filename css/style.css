@@ -74,6 +74,44 @@ strong { text-shadow: 1px 0px 1px currentColor; /* 1px 0px 0px pour enlever le "
     border-bottom: 2px solid #000;
 }
 
+/* ----- Navigation Menu (Navbar) ----- */
+
+.navmenu-bar {
+    position: absolute;
+    top: 20px;    
+    left: 50%;
+    height: 14px;
+    margin-left: -10px;
+}
+
+.navmenu {
+    display: block !important;
+    width: 100%;
+    padding: 15px 10px 15px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fff;
+    font-size: calc(0.75em + 0.75vw);
+    /*list-style: none;*/
+}
+
+.navmenu ul {
+    margin-bottom: 0;
+}
+
+.navmenu a {
+    color: grey; 
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.navmenu a:hover {
+    text-decoration: none;
+    background-image:radial-gradient(white 100%, black 100%);
+    color: black;
+    opacity: 0.8; 
+}
+
 /* ----- -----  Page Content ----- ----- */
 
 .content {

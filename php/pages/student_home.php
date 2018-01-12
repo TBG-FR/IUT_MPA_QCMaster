@@ -52,7 +52,7 @@
             
                 <a class='btn btn-lg btn-block btn-primary' href='student_results.php'>Voir mes résultats</a>\r
             
-                <a class='btn btn-lg btn-block btn-danger' href='?action=logout'>Déconnexion</a>\r
+              
             
             </div>\r
             
