@@ -19,8 +19,8 @@
 
     else if(!isset($_SESSION['user'])) { $_SESSION['user'] = ''; }
 
-    /* TEMP */ var_dump($_SESSION['user']);
-    /* TEMP */ var_dump($_SESSION['current_qcm']);
-    echo "____________________________________________________________________________________<br/><br/><br/>";
+    /* TEMP  var_dump($_SESSION['user']);
+    /* TEMP  var_dump($_SESSION['current_qcm']);
+    echo "____________________________________________________________________________________<br/><br/><br/>";*/
 
 // End of file ~ We don't close the PHP tag here, in order to avoid inserting invisible characters
