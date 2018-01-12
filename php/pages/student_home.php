@@ -46,9 +46,9 @@
             // ----- ------ If the User is logged as a Student => Display the Menu
             if($_SESSION['user'] instanceof Student) { echo "
             
-            <div class='user menu'>\r
+            <div class='menu student'>\r
             
-                <a class='btn btn-lg btn-block btn-primary' href='qcm_list.php'>Voir tous les QCM</a>\r
+                <a class='btn btn-lg btn-block btn-primary' href='qcm_list_all.php'>Voir tous les QCM</a>\r
             
                 <a class='btn btn-lg btn-block btn-primary' href='student_results.php'>Voir mes résultats</a>\r
             
@@ -121,7 +121,7 @@
             
             <h1 class='title'>Espace Étudiant</h1>
             
-            <div class='user login form-group'>
+            <div class='login student form-group'>
             
             <p class='title'>Connexion</p>
             
@@ -141,7 +141,7 @@
             
             <p class='title'>Inscription</p>
             
-            <div class='user register form-group'>
+            <div class='register student form-group'>
             
                 <form method='POST' action=''>
                 
