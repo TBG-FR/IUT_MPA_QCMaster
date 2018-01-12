@@ -1,7 +1,7 @@
 <?php
     
     require_once('../includes/all.inc.php');
-    
+    $db=new Database();
     //unset($_SESSION['current_qcm']);
     
     if(isset($_SESSION['current_qcm']) == FALSE) {
@@ -127,6 +127,75 @@
             
         }
     }
+    
+    if(isset($_POST['save'])){
+        
+        $_SESSION['current_qcm']->setTitle(/*SECURE*/$_POST['title']);
+        $_SESSION['current_qcm']->setTopic(/*SECURE*/($_POST['topic']));
+        
+        
+         $indexA=0;
+            $indexNameQ="Q".$indexQ; //echo "<br/>INQ: " . $indexNameQ;
+            
+            $question->setID($indexQ);
+            if(isset($_POST[$indexNameQ])){
+            $question->setTitle(/*SECURE*/($_POST[$indexNameQ]));
+            }
+            foreach ($question->getAnswers() as $answer){
+                
+                //var_dump($answer);
+                $indexNameA="Q".$indexQ."A".$indexA; //echo "<br/>INA: " . $indexNameA;
+                
+                $answer->setID($indexA);
+                if(isset($_POST[$indexNameA])){
+                $answer->setProposition(/*SECURE*/($_POST[$indexNameA]));
+                }
+                $indexCheck=$indexNameA."C";
+                if(isset($_POST[$indexCheck])){
+                    if($_POST[$indexCheck]=='on'){
+                        $answer->setCorrect(1);
+                    }
+                }
+                else{
+                        $answer->setCorrect(0);
+                }
+                
+                $indexA++;
+                //echo $indexA;
+            }
+            
+            
+            $indexQ++;
+        
+            var_dump($_SESSION['current_qcm']);
+        
+        $db->query('INSERT INTO qcmaster_qcm (id_teacher, title, topic) VALUES (:id_teacher, :title, :topic)');
+        if(isset($_SESSION['user'])){/*$teacher=$_SESSION['user']->getID();*/$teacher=-1;}else{$teacher=-1;} /*TODO*/
+        $db->bind(':id_teacher', $teacher);
+        $db->bind(':title', $_SESSION['current_qcm']->getTitle());
+        $db->bind(':topic',$_SESSION['current_qcm']->getTopic() );
+        $db->execute();
+        $qcm_id = $db->lastInsertId();
+        foreach ($_SESSION['current_qcm']->getQuestions() as $question){
+            $db->query('INSERT INTO qcmaster_question (id_QCM, title) VALUES ( :id_QCM, :title)');
+            $db->bind(':id_QCM', $qcm_id);
+            $db->bind(':title', $question->getTitle());
+            $db->execute();
+            $question_id=$db->lastInsertId();
+            /*
+            var_dump($question->getAnswers());
+            foreach($question->getAnswers() as $answer){
+                var_dump($answer);
+                echo'oui';
+                $db->query('INSERT INTO qcmaster_answer (id,id_question, proposition,correct) VALUES (:id,:id_question, :propostion,:correct)');
+                $db->bind(':id', $answer->getId());
+                $db->bind(':id_question', $question_id);
+                $db->bind(':proposition', $answer->getProposition());
+                $db->bind(':correct', boolval($answer->getCorrect()));
+                $db->execute();
+            }*/
+        }
+    }
 ?>
 <!DOCTYPE html>
 <!--
@@ -189,7 +258,7 @@ and open the template in the editor.
                 
                 ?>
                 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" name="save" class="btn btn-primary">Submit</button>
                 
                 
             </form>
