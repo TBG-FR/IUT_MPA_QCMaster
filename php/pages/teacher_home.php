@@ -40,7 +40,7 @@
                  
                 <a class='btn btn-lg btn-block btn-primary' href='qcm_list_own.php'>Liste de vos QCM</a>\r
             
-                <a class='btn btn-lg btn-block btn-primary' href='teacher_stats.php'>Voir les stats</a>\r
+                <a class='btn btn-lg btn-block btn-primary' href='teacher_stats.php'>Voir les stats de vos QCM</a>\r
             
                 <a class='btn btn-lg btn-block btn-danger' href='?action=logout'>Déconnexion</a>\r
             
@@ -109,7 +109,7 @@
             
             <h1 class='title'>Espace Enseignant</h1>
             
-            <div class='user login form-group'>
+            <div class='login teacher form-group'>
             
             <p class='title'>Connexion</p>
             
@@ -129,7 +129,7 @@
             
             <p class='title'>Inscription</p>
             
-            <div class='user register form-group'>
+            <div class='register teacher form-group'>
             
                 <form method='POST' action=''>
                 

@@ -8,7 +8,7 @@
 
 ?>
 
-<!-- ----- ----- 'qcm_list.php' ~ Displays a list with all public QCMs ----- ----- -->
+<!-- ----- ----- 'qcm_list_all.php' ~ Displays a list with all public QCMs ----- ----- -->
 
 <!doctype html>
 

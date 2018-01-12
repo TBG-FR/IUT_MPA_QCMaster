@@ -2,13 +2,13 @@
 
     // Place here the included/required files instructions
     require_once('../includes/all.inc.php');
-    //require_once('../includes/teacher_only.php'); /* TODO */
+    require_once('../includes/teacher_only.php'); /* TODO */
 
     $db=new Database();
 
 ?>
 
-<!-- ----- ----- 'qcm_list.php' ~ Displays a list with all user's QCMs ----- ----- -->
+<!-- ----- ----- 'qcm_list_own.php' ~ Displays a list with user's QCMs ----- ----- -->
 
 <!doctype html>
 
@@ -36,8 +36,7 @@
                 <?php
                 
                 
-                //$db->query('SELECT * FROM '. TABLE_QCM . ' WHERE id_teacher = :id'); /* TODO */            
-                $db->query('SELECT * FROM '. TABLE_QCM . ' WHERE 1 = 1');               
+                $db->query('SELECT * FROM '. TABLE_QCM . ' WHERE id_teacher = :id');  
                 $db->bind(':id', $_SESSION['user']->getID());
                 
                 $rows = $db->resultset();
