@@ -72,6 +72,14 @@ class Question {
         return $this->answers;
     }
     
+    /**
+     * Accessor 'getNbAnswers' : Returns number of answers
+     * @return integer
+     */
+    function getNbAnswers() {
+        return $this->nbAnswers;
+    }
+    
 //    /**
 //     * Accessor 'getAnswer' : Returns the asked answer
 //     * @param null : This function needs no parameters
