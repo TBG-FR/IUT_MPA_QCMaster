@@ -1,7 +1,7 @@
 <?php
     
     require_once('../includes/all.inc.php');
-    
+    $db=new Database();
     //unset($_SESSION['current_qcm']);
     
     if(isset($_SESSION['current_qcm']) == FALSE) {
@@ -16,23 +16,33 @@
         $_SESSION['current_qcm']->setTitle(/*SECURE*/$_POST['title']);
         $_SESSION['current_qcm']->setTopic(/*SECURE*/($_POST['topic']));
         
+        $tempQ=new Question($_SESSION['current_qcm']->getNbQuestions(),"");
+        $tempQ->addAnswer(new Answer(0,0,""));
+        $_SESSION['current_qcm']->addQuestion($tempQ);
+        
+        //var_dump($_POST);
         $indexQ=0;
         $indexA=0;
         
         foreach ($_SESSION['current_qcm']->getQuestions() as $question){
             
+            //var_dump($question);
+            $indexA=0;
             $indexNameQ="Q".$indexQ; echo "<br/>INQ: " . $indexNameQ;
             
             $question->setID($indexQ);
+            if(isset($_POST[$indexNameQ])){
             $question->setTitle(/*SECURE*/($_POST[$indexNameQ]));
-            
+            }
             foreach ($question->getAnswers() as $answer){
                 
+                //var_dump($answer);
                 $indexNameA="Q".$indexQ."A".$indexA; echo "<br/>INA: " . $indexNameA;
                 
                 $answer->setID($indexA);
+                if(isset($_POST[$indexNameA])){
                 $answer->setProposition(/*SECURE*/($_POST[$indexNameA]));
-                
+                }
                 $indexCheck=$indexNameA."C";
                 if(isset($_POST[$indexCheck])){
                     if($_POST[$indexCheck]=='on'){
@@ -44,19 +54,148 @@
                 }
                 
                 $indexA++;
+                //echo $indexA;
             }
             
-            $indexA=0;
-            $indexNameQ++;
+            
+            $indexQ++;
+            //echo $indexQ;
+            //echo $indexNameA;
             
         }
         
-        $tempQ=new Question($indexNameQ,"");
-        $tempQ->addAnswer(new Answer(0,0,""));        
-        $_SESSION['current_qcm']->addQuestion($tempQ);
+                
+        
+        //var_dump($_SESSION['current_qcm']);
     }
-    //var_dump($_SESSION['current_qcm']);
+
+    foreach($_SESSION['current_qcm']->getQuestions() as $question){
+        
+        if(isset($_POST['title'])){
+        $_SESSION['current_qcm']->setTitle(/*SECURE*/$_POST['title']);
+        }
+        if(isset($_POST['topic'])){
+        $_SESSION['current_qcm']->setTopic(/*SECURE*/($_POST['topic']));
+        }
+        
+        $temp='addAnswers'.$question->getID();
+        if(isset($_POST[$temp])){
+            $newQuest=new Answer($question->getNbAnswers(),0,"");
+            $question->addAnswer($newQuest);
+        }
+        
+        $indexQ=0;
+        $indexA=0;
+        
+        foreach ($_SESSION['current_qcm']->getQuestions() as $question){
+            
+            //var_dump($question);
+            $indexA=0;
+            $indexNameQ="Q".$indexQ; //echo "<br/>INQ: " . $indexNameQ;
+            
+            $question->setID($indexQ);
+            if(isset($_POST[$indexNameQ])){
+            $question->setTitle(/*SECURE*/($_POST[$indexNameQ]));
+            }
+            foreach ($question->getAnswers() as $answer){
+                
+                //var_dump($answer);
+                $indexNameA="Q".$indexQ."A".$indexA; //echo "<br/>INA: " . $indexNameA;
+                
+                $answer->setID($indexA);
+                if(isset($_POST[$indexNameA])){
+                $answer->setProposition(/*SECURE*/($_POST[$indexNameA]));
+                }
+                $indexCheck=$indexNameA."C";
+                if(isset($_POST[$indexCheck])){
+                    if($_POST[$indexCheck]=='on'){
+                        $answer->setCorrect(1);
+                    }
+                }
+                else{
+                        $answer->setCorrect(0);
+                }
+                
+                $indexA++;
+                //echo $indexA;
+            }
+            
+            
+            $indexQ++;
+            //echo $indexQ;
+            //echo $indexNameA;
+            
+        }
+    }
     
+    if(isset($_POST['save'])){
+        
+        $_SESSION['current_qcm']->setTitle(/*SECURE*/$_POST['title']);
+        $_SESSION['current_qcm']->setTopic(/*SECURE*/($_POST['topic']));
+        
+        
+         $indexA=0;
+            $indexNameQ="Q".$indexQ; //echo "<br/>INQ: " . $indexNameQ;
+            
+            $question->setID($indexQ);
+            if(isset($_POST[$indexNameQ])){
+            $question->setTitle(/*SECURE*/($_POST[$indexNameQ]));
+            }
+            foreach ($question->getAnswers() as $answer){
+                
+                //var_dump($answer);
+                $indexNameA="Q".$indexQ."A".$indexA; //echo "<br/>INA: " . $indexNameA;
+                
+                $answer->setID($indexA);
+                if(isset($_POST[$indexNameA])){
+                $answer->setProposition(/*SECURE*/($_POST[$indexNameA]));
+                }
+                $indexCheck=$indexNameA."C";
+                if(isset($_POST[$indexCheck])){
+                    if($_POST[$indexCheck]=='on'){
+                        $answer->setCorrect(1);
+                    }
+                }
+                else{
+                        $answer->setCorrect(0);
+                }
+                
+                $indexA++;
+                //echo $indexA;
+            }
+            
+            
+            $indexQ++;
+        
+            var_dump($_SESSION['current_qcm']);
+        
+        $db->query('INSERT INTO qcmaster_qcm (id_teacher, title, topic) VALUES (:id_teacher, :title, :topic)');
+        if(isset($_SESSION['user'])){/*$teacher=$_SESSION['user']->getID();*/$teacher=-1;}else{$teacher=-1;} /*TODO*/
+        $db->bind(':id_teacher', $teacher);
+        $db->bind(':title', $_SESSION['current_qcm']->getTitle());
+        $db->bind(':topic',$_SESSION['current_qcm']->getTopic() );
+        $db->execute();
+        $qcm_id = $db->lastInsertId();
+        foreach ($_SESSION['current_qcm']->getQuestions() as $question){
+            $db->query('INSERT INTO qcmaster_question (id_QCM, title) VALUES ( :id_QCM, :title)');
+            $db->bind(':id_QCM', $qcm_id);
+            $db->bind(':title', $question->getTitle());
+            $db->execute();
+            $question_id=$db->lastInsertId();
+            /*
+            var_dump($question->getAnswers());
+            foreach($question->getAnswers() as $answer){
+                var_dump($answer);
+                echo'oui';
+                $db->query('INSERT INTO qcmaster_answer (id,id_question, proposition,correct) VALUES (:id,:id_question, :propostion,:correct)');
+                $db->bind(':id', $answer->getId());
+                $db->bind(':id_question', $question_id);
+                $db->bind(':proposition', $answer->getProposition());
+                $db->bind(':correct', boolval($answer->getCorrect()));
+                $db->execute();
+            }*/
+        }
+    }
 ?>
 <!DOCTYPE html>
 <!--
@@ -96,19 +235,21 @@ and open the template in the editor.
                     
                         foreach ($_SESSION['current_qcm']->getQuestions() as $question){
                             
+                            echo'<fieldset class=form-group>';
                             echo '<div class="form-group">
                                     <label for="inputForQ'.$question->getID().'">Le titre de votre question</label>
                                     <input type="text" class="form-control" name="Q'.$question->getID().'" id="questionInput" value="'.$question->getTitle().'">
                                   </div><br/>';
                             
                             foreach ($question->getAnswers() as $answer){
-                                echo'<button type="submit" class="btn btn-primary" name="addAnswers">Ajouter une réponse</button>';
+                                echo'<button type="submit" class="btn btn-primary" name="addAnswers'.$question->getID().'">Ajouter une réponse</button>';
                                 echo '<div class="form-group row ">
                                         <label class="form-group-label">L\' intitulé de votre reponse </label>
                                         <input class="form-group-input" type="text" name="Q'.$question->getID().'A'.$answer->getID().'" value="'.$answer->getProposition().'">
                                         <label class="form-check-label"><input class="form-check-input" name="Q'.$question->getID().'A'.$answer->getID().'C" type="checkbox"'; if($answer->getCorrect()==1){echo ' checked ';}  echo'> Correct ?</label></div>';
                             }
                             echo '</div><br/>';
+                            echo '</fieldset>';
                         }
                 
                 
@@ -117,7 +258,7 @@ and open the template in the editor.
                 
                 ?>
                 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" name="save" class="btn btn-primary">Submit</button>
                 
                 
             </form>
