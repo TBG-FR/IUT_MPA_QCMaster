@@ -90,11 +90,12 @@ COLLATE utf8_bin;
 CREATE TABLE qcmaster_Answer
 (
     id          INT NOT NULL,/*AUTO_INCREMENT*/
+	id_internal INT NOT NULL AUTO_INCREMENT,
     id_question INT NOT NULL,
     proposition VARCHAR(100) NOT NULL,
     correct     BOOLEAN,
     
-    PRIMARY KEY (id,id_question)
+    PRIMARY KEY (id_internal)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8
